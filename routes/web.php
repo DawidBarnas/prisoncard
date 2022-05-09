@@ -23,7 +23,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware(['auth'])->group(function() {
 
-Route::get('/admin', [App\Http\Controllers\UserController::class, 'index']);
+Route::get('/admin', [App\Http\Controllers\UserController::class, 'index'])->middleware('can:isAdmin');
 });
 
 
