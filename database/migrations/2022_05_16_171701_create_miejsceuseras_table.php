@@ -3,10 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\UserRole;
 
-
-class AddRoleColumnToUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +13,10 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('role', UserRole::TYPES)->default(UserRole::USER)->after('email');
-            //
+        Schema::create('miejsceuseras', function (Blueprint $table) {
+            $table->integer('id_straznika')->unsigned();
+            $table->increments('Miejsce');
+            $table->foreign('id_straznika')->references('id')->on('users');
         });
     }
 
@@ -28,8 +27,6 @@ class AddRoleColumnToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::dropIfExists('miejsceuseras');
     }
 };
