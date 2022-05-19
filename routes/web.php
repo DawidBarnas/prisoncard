@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function() {
 });
 /* ZALOGOWANI */
     Route::get('/prisoner_list', [App\Http\Controllers\PrisonerListController::class, 'PrisonerList']);
-    Route::get('/guard_list', [App\Http\Controllers\GuardListController::class, 'GuardList']);
+    Route::get('/guard_list', [App\Http\Controllers\UserController::class, 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
