@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Prisoner;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class PrisonerController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

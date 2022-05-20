@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('contentdashb')
 
-<table class="table">
+<table class="table table-hover">
   <thead>
     <tr>
       <th scope="col">Id</th>
@@ -12,41 +12,32 @@
       <th scope="col">Waga</th>
       <th scope="col">Wzrost</th>
       <th scope="col">Telefon</th>
+      <th scope="col">id_celi</th>
+      <th scope="col">mozliwosc_wizyt</th>
+      <th scope="col">mozliwosc_przepustek</th>
+      <th scope="col">Status_celi</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>X</td>
-      <td>X</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>X</td>
-      <td>X</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>X</td>
-      <td>X</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-    </tr>
+    @foreach($prisoners as $prisoner)
+      <tr>
+        <th scope="row">{{$prisoner->id}}</th>
+        <td>{{$prisoner->Imie}}</td>
+        <td>{{$prisoner->Nazwisko}}</td>
+        <td>{{$prisoner->Miasto}}</td>
+        <td>{{$prisoner->Ulica}}</td>
+        <td>{{$prisoner->Waga}}</td>    
+        <td>{{$prisoner->Wzrost}}</td>  
+        <td>{{$prisoner->Telefon}}</td>  
+        <td>{{$prisoner->id_celi}}</td>  
+        <td>{{$prisoner->mozliwosc_wizyt}}</td>  
+        <td>{{$prisoner->mozliwosc_przepustek}}</td>  
+        <td>{{$prisoner->Status_celi}}</td>     
+      </tr>
+      
+    @endforeach
   </tbody>
 </table>
-
+{{ $prisoners->links() }}
 
 @endsection('contentdashb')

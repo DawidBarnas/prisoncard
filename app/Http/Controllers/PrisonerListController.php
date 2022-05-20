@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Prisoner;
 use Illuminate\Http\Request;
 
 class PrisonerListController extends Controller
@@ -13,7 +14,8 @@ class PrisonerListController extends Controller
      */
     public function PrisonerList()
     {
-        return view('prisoner_list');
+        $prisoners = Prisoner::paginate(7);
+        return view('prisoner_list', compact('prisoners'));
     }
 
     /**
