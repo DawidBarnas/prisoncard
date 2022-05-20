@@ -10,6 +10,7 @@
       <th scope="col">Email</th>
       <th scope="col">Stopien</th>
       <th scope="col">Telefon</th>
+      <th scope="col">Akcje</th>
     </tr>
   </thead>
   <tbody>
@@ -20,12 +21,14 @@
         <td>{{$guard->surname}}</td>
         <td>{{$guard->email}}</td>
         <td>{{$guard->Stopien}}</td>
-        <td>{{$guard->Telefon}}</td>        
+        <td>{{$guard->Telefon}}</td>    
+        <td></td>    
       </tr>
       
     @endforeach
   </tbody>
 </table>
+{{ $guards->links() }}
 
 
 @endsection('contentdashb')

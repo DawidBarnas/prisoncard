@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $guards = DB::table('users')->where('role', 'user')->get();
+        $guards = User::where('role','user')->paginate(7);
         return view('guard_list', compact('guards'));
     }
 
