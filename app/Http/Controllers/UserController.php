@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $guards = User::where('role','user')->paginate(7);
-        return view('guard_list', compact('guards'));
+        return view('guard_list', ['guards'=>$guards]);
     }
 
     /**
@@ -29,6 +29,13 @@ class UserController extends Controller
         //
     }
 
+    public function delete($id)
+    {
+        $guards = User::where('role','user')->find($id);
+        $guards->delete();
+        return redirect('guard_list');
+
+    }
     /**
      * Store a newly created resource in storage.
      *

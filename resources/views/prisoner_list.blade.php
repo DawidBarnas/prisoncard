@@ -16,6 +16,7 @@
       <th scope="col">mozliwosc_wizyt</th>
       <th scope="col">mozliwosc_przepustek</th>
       <th scope="col">Status_celi</th>
+      <th scope="col">Akcje</th>
     </tr>
   </thead>
   <tbody>
@@ -32,7 +33,10 @@
         <td>{{$prisoner->id_celi}}</td>  
         <td>{{$prisoner->mozliwosc_wizyt}}</td>  
         <td>{{$prisoner->mozliwosc_przepustek}}</td>  
-        <td>{{$prisoner->Status_celi}}</td>     
+        <td>{{$prisoner->Status_celi}}</td> 
+        <td>
+          <a href={{"delete/".$prisoner['id']}}>Delete</a>
+        </td>    
       </tr>
       
     @endforeach

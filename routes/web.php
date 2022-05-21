@@ -30,7 +30,8 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/admin', [App\Http\Controllers\UserController::class, 'index']);
         Route::get('/add_delete_guard', [App\Http\Controllers\AddDeleteGuardController::class, 'ADGuard']);
         Route::get('/add_delete_prison', [App\Http\Controllers\AddDeletePrisonerController::class, 'ADPrisoner']);
-
+        Route::get('delete/{id}', [App\Http\Controllers\UserController::class, 'delete']);
+        Route::get('delete/{id}', [App\Http\Controllers\PrisonerListController::class, 'delete']);
 
 });
 /* ZALOGOWANI */

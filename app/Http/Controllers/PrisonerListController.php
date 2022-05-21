@@ -18,6 +18,13 @@ class PrisonerListController extends Controller
         return view('prisoner_list', compact('prisoners'));
     }
 
+    public function delete($id)
+    {
+        $prisoners = Prisoner::find($id);
+        $prisoners->delete();
+        return redirect('prisoner_list');
+
+    }
     /**
      * Show the form for creating a new resource.
      *
