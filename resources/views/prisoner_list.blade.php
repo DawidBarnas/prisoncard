@@ -1,6 +1,16 @@
 @extends('layouts.dashboard')
 @section('contentdashb')
 
+<div class="row">
+  <div class="col-6">
+    Lista więźniów
+</div>
+<div class="col-6">
+  <a class="float-right" href="/add_delete_prisoner">
+    <button type="button" class="btn btn-primary">Dodaj</button>
+</a>
+</div>
+<div class="row">
 <table class="table table-hover">
   <thead>
     <tr>
@@ -27,21 +37,20 @@
         <td>{{$prisoner->Nazwisko}}</td>
         <td>{{$prisoner->Miasto}}</td>
         <td>{{$prisoner->Ulica}}</td>
-        <td>{{$prisoner->Waga}}</td>    
-        <td>{{$prisoner->Wzrost}}</td>  
-        <td>{{$prisoner->Telefon}}</td>  
-        <td>{{$prisoner->id_celi}}</td>  
-        <td>{{$prisoner->mozliwosc_wizyt}}</td>  
-        <td>{{$prisoner->mozliwosc_przepustek}}</td>  
-        <td>{{$prisoner->Status_celi}}</td> 
-        <td>
-          <a href={{"delete/".$prisoner['id']}}>Delete</a>
-        </td>    
+        <td>{{$prisoner->Waga}}</td>
+        <td>{{$prisoner->Wzrost}}</td>
+        <td>{{$prisoner->Telefon}}</td>
+        <td>{{$prisoner->id_celi}}</td>
+        <td>{{$prisoner->mozliwosc_wizyt}}</td>
+        <td>{{$prisoner->mozliwosc_przepustek}}</td>
+        <td>{{$prisoner->Status_celi}}</td>
+        <td><a href={{"delete/".$prisoner['id']}}>Delete</a></td>  
       </tr>
-      
+
     @endforeach
   </tbody>
 </table>
 {{ $prisoners->links() }}
+</div>
 
 @endsection('contentdashb')

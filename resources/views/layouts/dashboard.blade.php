@@ -160,7 +160,7 @@
                         </li>
                         @can('isAdmin')
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add_delete_prison"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add_delete_prisoner"
                                 aria-expanded="false">
                                 <i class="mdi mdi-face"></i>
                                 <span class="hide-menu">Dodaj/usun więznia</span>

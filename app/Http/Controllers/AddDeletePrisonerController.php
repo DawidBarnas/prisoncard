@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Prisoner;
 use Illuminate\Http\Request;
 
 class AddDeletePrisonerController extends Controller
@@ -23,7 +23,7 @@ class AddDeletePrisonerController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_delete_prisoner');
     }
 
     /**
@@ -34,7 +34,35 @@ class AddDeletePrisonerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'Imie' => 'required',
+            'Nazwisko' => 'required',
+            'Miasto' => 'required',
+            'Ulica' => 'required',
+            'Waga' => 'required',
+            'Wzrost' => 'required',
+            'Telefon' => 'required',
+            'id_celi' => 'required',
+            'mozliwosc_wizyt' => 'required',
+            'mozliwosc_przepustek' => 'required',
+            'Status_celi' => 'required',
+        ]);
+
+        Prisoner::create([
+            'Imie' => request('Imie'),
+            'Nazwisko' => request('Nazwisko'),
+            'Miasto' => request('Miasto'),
+            'Ulica' => request('Ulica'),
+            'Waga' => request('Waga'),
+            'Wzrost' => request('Wzrost'),
+            'Telefon' => request('Telefon'),
+            'id_celi' => request('id_celi'),
+            'mozliwosc_wizyt' => request('mozliwosc_wizyt'),
+            'mozliwosc_przepustek' => request('mozliwosc_przepustek'),
+            'Status_celi' => request('Status_celi'),
+        ]);
+
+        return redirect('prisoner_list');
     }
 
     /**
@@ -80,5 +108,10 @@ class AddDeletePrisonerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function save(Request $request)
+    {
+
     }
 }

@@ -11,9 +11,9 @@ use Laravel\Sanctum\HasApiTokens;
 class Prisoner extends Model
 {
     use HasFactory;
-
+    public $timestamps=false;
     protected $table = 'prisoners';
     protected $fillable = [
-        'id', 'Imie', 'Nazwisko', 'Miasto','Ulica', 'Waga', 'Wzrost', 'Telefon', 'id_celi', 'Mozliwosc_wizyt', 'Mozliwosc_przepustek', 'Status_celi',
+        'id', 'Imie', 'Nazwisko', 'Miasto','Ulica', 'Waga', 'Wzrost', 'Telefon', 'id_celi', 'mozliwosc_wizyt', 'mozliwosc_przepustek', 'Status_celi',
     ];
 }
