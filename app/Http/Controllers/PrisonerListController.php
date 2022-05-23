@@ -32,7 +32,7 @@ class PrisonerListController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_delete_prisoner');
     }
 
     /**
@@ -89,6 +89,31 @@ class PrisonerListController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function edit_function($id)
+    {
+        $prisoner = DB::select('select * from prisoners where id = ?',[$id]);
+        return view('admin.prisoneredit',['prisoner'=>$prisoner]);
+    }
+
+    public function update_function(Request $request,$id)
+    {
+        $Imie = $prisoner = $request->input('Imie');
+        $Nazwisko = $prisoner = $request->input('Nazwisko');
+        $Miasto = $prisoner = $request->input('Miasto');
+        $Ulica = $prisoner = $request->input('Ulica');
+        $Waga = $prisoner = $request->input('Waga');
+        $Wzrost = $prisoner = $request->input('Wzrost');
+        $Telefon = $prisoner = $request->input('Telefon');
+        $id_celi = $prisoner = $request->input('id_celi');
+        $mozliwosc_wizyt = $prisoner = $request->input('mozliwosc_wizyt');
+        $mozliwosc_przepustek = $prisoner = $request->input('mozliwosc_przepustek');
+        $Status_celi = $prisoner = $request->input('Status_celi');
+
+        DB::update('update prisoners set Imie = ?, Nazwisko = ?, Miasto = ?, Ulica = ?, Waga = ?, Wzrost = ?, Telefon = ?, id_celi = ?, mozliwosc_wizyt = ?, mozliwosc_przepustek = ?, Status_celi = ? where id = ?', [$Imie, $Nazwisko, $Miasto, $Ulica, $Waga, $Wzrost, $Telefon, $id_celi, $mozliwosc_wizyt, $mozliwosc_przepustek, $Status_celi, $id]);
+
+        return redirect('prisoner_list')->with('success','Dane zmienione');
     }
 }
 

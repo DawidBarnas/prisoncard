@@ -91,4 +91,24 @@ class UserController extends Controller
     {
         //
     }
+
+    public function edit_function($id)
+    {
+        $guard = DB::select('select * from users where id = ?',[$id]);
+        return view('admin.useredit',['guard'=>$guard]);
+    }
+
+    public function update_function(Request $request,$id)
+    {
+        $name = $guard = $request->input('name');
+        $surname = $guard = $request->input('surname');
+        $email = $guard = $request->input('email');
+        $Stopien = $guard = $request->input('Stopien');
+        $Telefon = $guard = $request->input('Telefon');
+        $Status = $guard = $request->input('Status');
+        
+        DB::update('update users set name = ?, surname = ?, email = ?, Stopien = ?, Telefon = ?, Status = ? where id = ?', [$name, $surname, $email, $Stopien, $Telefon, $Status, $id]);
+
+        return redirect('guard_list')->with('success','Dane zmienione');
+    }
 }

@@ -44,10 +44,10 @@
         <td>{{$prisoner->mozliwosc_wizyt}}</td>
         <td>{{$prisoner->mozliwosc_przepustek}}</td>
         <td>{{$prisoner->Status_celi}}</td>
-        <td>  
-            <a href={{"deleteprisoner/".$prisoner['id']}}>
-              <button type="button" class="btn btn-danger btn-sm">Usuń</button>
-            </a></td>  
+        <td>
+        <a href="click_edit/{{ $prisoner -> id }}">Edytuj</a>
+        <a href={{"delete/".$prisoner['id']}}>Usuń</a>
+        </td>
       </tr>
 
     @endforeach

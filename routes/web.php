@@ -36,6 +36,10 @@ Route::middleware(['auth'])->group(function() {
         Route::post('add_delete_prisoner',[AddDeletePrisonerController::class, 'store']);
         Route::get('add_delete_guard/create', [AddDeleteGuardController::class, 'create']);
         Route::post('add_delete_guard', [AddDeleteGuardController::class, 'store']);
+        Route::get('click_edit/{id}',[App\Http\Controllers\PrisonerListController::class, 'edit_function']);
+        Route::post('/update/{id}',[App\Http\Controllers\PrisonerListController::class, 'update_function']);
+        Route::get('guard_edit/{id}',[App\Http\Controllers\UserController::class, 'edit_function']);
+        Route::post('/guard_update/{id}',[App\Http\Controllers\UserController::class, 'update_function']);
 
 });
 /* ZALOGOWANI */
