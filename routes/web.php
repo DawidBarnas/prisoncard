@@ -34,6 +34,8 @@ Route::middleware(['auth'])->group(function() {
         Route::get('delete/{id}', [App\Http\Controllers\PrisonerListController::class, 'delete']);
         Route::get('add_delete_prisoner/create',[AddDeletePrisonerController::class, 'create']);
         Route::post('add_delete_prisoner',[AddDeletePrisonerController::class, 'store']);
+        Route::get('click_edit/{id}',[App\Http\Controllers\PrisonerListController::class, 'edit_function']);
+        Route::post('/update/{id}',[App\Http\Controllers\PrisonerListController::class, 'update_function']);
 
 });
 /* ZALOGOWANI */

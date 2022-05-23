@@ -44,7 +44,8 @@
         <td>{{$prisoner->mozliwosc_wizyt}}</td>
         <td>{{$prisoner->mozliwosc_przepustek}}</td>
         <td>{{$prisoner->Status_celi}}</td>
-        <td><a href={{"delete/".$prisoner['id']}}>Delete</a></td>  
+        <td><a href={{"delete/".$prisoner['id']}}>Delete</a>
+        <a href="click_edit/{{ $prisoner -> id }}"> Edytuj</a></td>  
       </tr>
 
     @endforeach

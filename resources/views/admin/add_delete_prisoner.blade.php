@@ -16,7 +16,7 @@
     <hr>
     <div class="form-group">
         <label for="Imie">Imie</label>
-        <input id="Status_celi" type="text" class="form-control" name="Imie" placeholder="Wpisz imię" >
+        <input id="Imie" type="text" class="form-control" name="Imie" placeholder="Wpisz imię" >
     </div>
     <div class="form-group">
         <label for="Nazwisko">Nazwisko</label>
@@ -59,7 +59,7 @@
         <input id="Status_celi" type="text" class="form-control" name="Status_celi" placeholder="Wpisz status celi" >
     </div>
 
-    <input type="submit" name="submit" class="btn btn-success" value="Save/Insert Data">
+    <input type="submit" name="submit" class="btn btn-success" value="Zapisz Dane">
   <a class="float-right" href="/prisoner_list">
     <button type="button" class="btn btn-primary">Cofnij</button>
 </a>
