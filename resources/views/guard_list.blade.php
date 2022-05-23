@@ -22,7 +22,10 @@
         <td>{{$guard->email}}</td>
         <td>{{$guard->Stopien}}</td>
         <td>{{$guard->Telefon}}</td>    
-        <td><a href={{"delete/".$guard['id']}}>Delete</a></td>    
+        <td>
+        <a href="guard_edit/{{ $guard -> id }}">Edytuj </a>
+          <a href={{"delete/".$guard['id']}}>Delete</a>
+        </td>    
       </tr>
       
     @endforeach
