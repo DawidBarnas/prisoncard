@@ -24,7 +24,7 @@
         <td>{{$guard->Telefon}}</td>    
         <td>
         <a href="guard_edit/{{ $guard -> id }}">Edytuj </a>
-          <a href={{"delete/".$guard['id']}}>Usuń</a>
+          <a href={{"deleteguard/".$guard['id']}}>Usuń</a>
         </td>    
       </tr>
       

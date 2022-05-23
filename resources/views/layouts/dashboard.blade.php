@@ -147,7 +147,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add_delete_guard"
                                 aria-expanded="false">
                                 <i class="mdi mdi-arrange-bring-forward"></i>
-                                <span class="hide-menu">Dodaj/usun strażnika</span>
+                                <span class="hide-menu">Dodaj strażnika</span>
                             </a>
                         </li>
                         @endcan
@@ -163,7 +163,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/add_delete_prisoner"
                                 aria-expanded="false">
                                 <i class="mdi mdi-face"></i>
-                                <span class="hide-menu">Dodaj/usun więznia</span>
+                                <span class="hide-menu">Dodaj więznia</span>
                             </a>
                         </li>
                         @endcan

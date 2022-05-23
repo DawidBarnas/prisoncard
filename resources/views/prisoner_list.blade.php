@@ -46,7 +46,7 @@
         <td>{{$prisoner->Status_celi}}</td>
         <td>
         <a href="click_edit/{{ $prisoner -> id }}">Edytuj</a>
-        <a href={{"delete/".$prisoner['id']}}>Usuń</a>
+        <a href={{"deleteprisoner/".$prisoner['id']}}>Usuń</a>
         </td>
       </tr>
 
