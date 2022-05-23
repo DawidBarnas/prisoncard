@@ -22,7 +22,9 @@
         <td>{{$guard->email}}</td>
         <td>{{$guard->Stopien}}</td>
         <td>{{$guard->Telefon}}</td>    
-        <td><a href={{"delete/".$guard['id']}}>Delete</a></td>    
+        <td><a href={{"deleteguard/".$guard['id']}}>
+          <button type="button" class="btn btn-danger btn-sm">Usuń</button>
+        </a></td>    
       </tr>
       
     @endforeach

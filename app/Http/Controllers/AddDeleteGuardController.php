@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AddDeleteGuardController extends Controller
 {
@@ -23,19 +26,42 @@ class AddDeleteGuardController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.add_delete_guard');
     }
 
+    public function store(Request $request)
+    {
+        request()->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'Stopien' => 'required',
+            'Telefon' => 'required',
+            'Status' => 'required',
+            
+        ]);
+
+        User::create([
+            'name' => request('name'),
+            'surname' => request('surname'),
+            'email' => request('email'),
+            'password' => Hash::make($request['password']),
+            'Stopien' => request('Stopien'),
+            'Telefon' => request('Telefon'),
+            'Status' => request('Status'),
+            
+        ]);
+
+        return redirect('guard_list');
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+ 
 
     /**
      * Display the specified resource.

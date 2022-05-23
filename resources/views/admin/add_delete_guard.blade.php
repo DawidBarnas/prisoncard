@@ -10,129 +10,51 @@
 <body>
     <form action="/add_delete_guard" method="post">
         {{csrf_field()}}
-        <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dodawanie strażnika</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">Imię</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="surname" class="col-md-4 col-form-label text-md-end">Nazwisko</label>
-
-                            <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ old('surname') }}" required autocomplete="surname" autofocus>
-                                @error('surname')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="Stopien" class="col-md-4 col-form-label text-md-end">Stopien</label>
-
-                            <div class="col-md-6">
-                                <input id="stopien" type="text" class="form-control @error('stopien') is-invalid @enderror" name="stopien" value="{{ old('stopien') }}" required autocomplete="stopien" autofocus>
-
-                                @error('stopien')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="Telefon" class="col-md-4 col-form-label text-md-end">Telefon</label>
-
-                            <div class="col-md-6">
-                                <input id="telefon" type="text" class="form-control @error('telefon') is-invalid @enderror" name="Telefon" value="{{ old('telefon') }}" required autocomplete="telefon" autofocus>
-
-                                @error('telefon')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="status" class="col-md-4 col-form-label text-md-end">Status</label>
-
-                            <div class="col-md-6">
-                                <input id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
-
-                                @error('status')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Hasło</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Potwierdź hasło</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Dodaj
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="container">
+    <div class="jumbotron" style="margin-top: 5%;">
+    <h1> Dodawanie straznika</h1>
+    <hr>
+    <div class="form-group">
+        <label for="name">Imie</label>
+        <input id="name" type="text" class="form-control" name="name" placeholder="Wpisz imię" >
     </div>
+    <div class="form-group">
+        <label for="surname">Nazwisko</label>
+        <input id="surname" type="text" class="form-control" name="surname" placeholder="Wpisz nazwisko" >
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" class="form-control" name="email" placeholder="Wpisz email" >
+        
+    </div>
+    <div class="form-group">
+        <label for="password">Hasło</label>
+        <input id="password" type="password" class="form-control" name="password" placeholder="Wpisz haslo" >
+
+    </div>
+    
+    <div class="form-group">
+        <label for="Stopien">Stopien</label>
+        <input id="Stopien" type="text" class="form-control" name="Stopien" placeholder="Wpisz stopien" >
+    </div>
+    <div class="form-group">
+        <label for="Telefon">Telefon</label>
+        <input id="Telefon" type="number" class="form-control" name="Telefon" placeholder="Wpisz telefon" >
+    </div>
+    <div class="form-group">
+        <label for="Status">Status</label>
+        <input id="Status" type="text" class="form-control" name="Status" placeholder="Wpisz Status" >
+    </div>
+    
+
+    <input type="submit" name="submit" class="btn btn-success" value="Save/Insert Data">
+  <a class="float-right" href="/guard_list">
+    <button type="button" class="btn btn-primary">Cofnij</button>
+</a>
+</div>
 </div>
 </form>
 </body>
+
+
 </html>
