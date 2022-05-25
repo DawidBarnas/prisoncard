@@ -8,8 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Miejsce_wieznia extends Model
 {
     use HasFactory;
-    protected $table = 'Miejsce_wieznia';
+    protected $table = 'miejsce_wieznias';
     protected $fillable = [
         'id_wieznia', 'Miejsce',
+    ];
+
+    protected $casts =
+    [
+        'id_wieznia' => 'int',
+        'Miejsce' => 'int',
+
     ];
 }

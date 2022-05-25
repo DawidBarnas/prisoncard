@@ -9,8 +9,15 @@ class Miejsceusera extends Model
 {
     use HasFactory;
 
-    protected $table = 'Miejsceusera';
+    protected $table = 'miejsceuseras';
     protected $fillable = [
         'id_straznika', 'Miejsce',
+    ];
+
+    protected $casts =
+    [
+        'id_straznika' => 'int',
+        'Miejsce' => 'int',
+
     ];
 }

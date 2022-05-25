@@ -9,8 +9,24 @@ class Kara extends Model
 {
     use HasFactory;
 
-    protected $table = 'Kara';
+    protected $table = 'karas';
     protected $fillable = [
-        'id', 'id_wieznia','Typ','data_rozpoczecia','planowana_data_zakonczenia','dodatkowe_kary',
+        'id', 
+        'id_wieznia',
+        'Typ',
+        'data_rozpoczecia',
+        'planowana_data_zakonczenia',
+        'dodatkowe_kary',
     ];
+
+    protected $casts =
+    [
+        'id_wieznia' => 'int',
+        'Typ' => 'varchar',
+        'data_rozpoczecia' => 'date',
+        'planowana_data_zakonczenia' => 'date',
+        'dodatkowe_kary' => 'varchar',
+
+    ];
+
 }
