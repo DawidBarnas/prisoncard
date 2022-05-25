@@ -14,4 +14,11 @@ class Cela extends Model
     protected $fillable = [
         'id', 'pojemnosc',
     ];
+    
+    protected $casts =
+    [
+        'pojemnosc' => 'int',
+
+    ];
+
 }

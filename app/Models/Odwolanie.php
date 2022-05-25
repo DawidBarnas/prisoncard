@@ -9,8 +9,20 @@ class Odwolanie extends Model
 {
     use HasFactory;
 
-    protected $table = 'Odwolanie';
+    protected $table = 'odwolanies';
     protected $fillable = [
-        'id', 'id_procesu','data_zgloszenia', 'data_rozprawy', 'Status',
+        'id', 
+        'id_procesu',
+        'data_zgloszenia', 
+        'data_rozprawy', 
+        'Status',
+    ];
+
+    protected $casts =
+    [
+        'id_procesu' => 'int',
+        'data_zgloszenia' => 'int', 
+        'data_rozprawy' => 'date', 
+        'Status' => 'date',
     ];
 }
