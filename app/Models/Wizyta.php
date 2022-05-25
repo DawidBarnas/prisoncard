@@ -9,8 +9,14 @@ class Wizyta extends Model
 {
     use HasFactory;
 
-    protected $table = 'Wizyta';
+    protected $table = 'Wizytas';
     protected $fillable = [
         'id', 'id_wieznia', 'data_wizyty', 'czas_trwania',
     ];
+    protected $casts =
+    [
+        'data_wizyty' => 'date',
+        'czas_trwania' => 'int',
+    ];
+
 }

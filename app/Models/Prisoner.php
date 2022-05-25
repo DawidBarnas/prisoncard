@@ -16,4 +16,18 @@ class Prisoner extends Model
     protected $fillable = [
         'id', 'Imie', 'Nazwisko', 'Miasto','Ulica', 'Waga', 'Wzrost', 'Telefon', 'id_celi', 'mozliwosc_wizyt', 'mozliwosc_przepustek', 'Status_celi',
     ];
+
+    protected $casts =
+    [
+        'Imie' => 'varchar',
+        'Nazwisko' => 'varchar',
+        'Miasto' => 'varchar',
+        'Ulica' => 'varchar',
+        'Waga' => 'int',
+        'Wzrost' => 'int',
+        'Telefon' => 'int',
+        'mozliwosc_wizyt' => 'boolean',
+        'mozliwosc_przepustek' => 'boolean',
+        'Status_celi' => 'varchar',
+    ];
 }

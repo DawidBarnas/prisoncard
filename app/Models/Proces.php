@@ -13,4 +13,12 @@ class Proces extends Model
     protected $fillable = [
         'id', 'id_kary', 'Status', 'Data_procesu', 'Grzywna',
     ];
+
+    protected $casts =
+    [
+        'Status' => 'varchar',
+        'Data_procesu' => 'date',
+        'Grzywna' => 'int',
+    ];
+
 }
