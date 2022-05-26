@@ -22,10 +22,10 @@ class Kara extends Model
     protected $casts =
     [
         'id_wieznia' => 'int',
-        'Typ' => 'varchar',
+        'Typ' => 'string',
         'data_rozpoczecia' => 'date',
         'planowana_data_zakonczenia' => 'date',
-        'dodatkowe_kary' => 'varchar',
+        'dodatkowe_kary' => 'string',
 
     ];
 

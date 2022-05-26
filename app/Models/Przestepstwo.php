@@ -17,8 +17,8 @@ class Przestepstwo extends Model
     [
         'data_popelnienia' => 'date',
         'data_rozprawy' => 'date',
-        'Klasyfikacja' => 'varchar',
-        'Status' => 'varchar',
+        'Klasyfikacja' => 'string',
+        'Status' => 'string',
     ];
 
 }

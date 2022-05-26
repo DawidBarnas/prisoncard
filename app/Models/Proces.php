@@ -16,7 +16,7 @@ class Proces extends Model
 
     protected $casts =
     [
-        'Status' => 'varchar',
+        'Status' => 'string',
         'Data_procesu' => 'date',
         'Grzywna' => 'int',
     ];

@@ -19,15 +19,15 @@ class Prisoner extends Model
 
     protected $casts =
     [
-        'Imie' => 'varchar',
-        'Nazwisko' => 'varchar',
-        'Miasto' => 'varchar',
-        'Ulica' => 'varchar',
+        'Imie' => 'string',
+        'Nazwisko' => 'string',
+        'Miasto' => 'string',
+        'Ulica' => 'string',
         'Waga' => 'int',
         'Wzrost' => 'int',
         'Telefon' => 'int',
         'mozliwosc_wizyt' => 'boolean',
         'mozliwosc_przepustek' => 'boolean',
-        'Status_celi' => 'varchar',
+        'Status_celi' => 'string',
     ];
 }
