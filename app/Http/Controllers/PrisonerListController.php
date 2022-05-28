@@ -115,5 +115,15 @@ class PrisonerListController extends Controller
 
         return redirect('prisoner_list')->with('success','Dane zmienione');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $prisoners = DB::table('prisoners')-> where ('Imie', 'like', '%'.$search.'%')
+        ->orWhere('Nazwisko', 'like', '%'.$search.'%')
+        ->paginate(10);
+        return view('prisoner_list',['prisoners' => $prisoners]);
+    }
+
 }
 

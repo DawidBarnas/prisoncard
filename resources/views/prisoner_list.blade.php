@@ -5,11 +5,22 @@
   <div class="col-6">
     Lista więźniów
 </div>
+<div class="col-md-4">
+  <form action="/search" method="get">
+    <div class="input-group">
+      <input type="search" name="search" class="form-control">
+      <span class="input-group-prepend">
+        <button type="submit" class="btn btn-primary">Szukaj</button>
+</span>
+</div>
+</form>
+</div>
 <div class="col-6">
   <a class="float-right" href="/add_delete_prisoner">
     <button type="button" class="btn btn-primary">Dodaj</button>
 </a>
 </div>
+
 <div class="row">
 <table class="table table-hover">
   <thead>
@@ -46,7 +57,7 @@
         <td>{{$prisoner->Status_celi}}</td>
         <td>
         <a href="click_edit/{{ $prisoner -> id }}">Edytuj</a>
-        <a href={{"deleteprisoner/".$prisoner['id']}}>Usuń</a>
+        <a href="deleteprisoner/{{ $prisoner -> id}}">Usuń</a>
         </td>
       </tr>
 

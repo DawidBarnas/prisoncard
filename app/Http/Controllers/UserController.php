@@ -111,4 +111,5 @@ class UserController extends Controller
 
         return redirect('guard_list')->with('success','Dane zmienione');
     }
+
 }

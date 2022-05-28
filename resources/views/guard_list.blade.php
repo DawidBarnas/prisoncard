@@ -1,6 +1,13 @@
 @extends('layouts.dashboard')
 @section('contentdashb')
-
+<div class="row">
+<div class="col-6">
+    Lista strażników
+<div class="col-6">
+  <a class="float-right" href="/add_delete_guard">
+    <button type="button" class="btn btn-primary">Dodaj</button>
+</a>
+</div>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -24,7 +31,7 @@
         <td>{{$guard->Telefon}}</td>    
         <td>
         <a href="guard_edit/{{ $guard -> id }}">Edytuj </a>
-          <a href={{"deleteguard/".$guard['id']}}>Usuń</a>
+          <a href="deleteguard/{{ $guard -> id }}">Usuń</a>
         </td>    
       </tr>
       
@@ -32,6 +39,6 @@
   </tbody>
 </table>
 {{ $guards->links() }}
-
+</div>
 
 @endsection('contentdashb')
