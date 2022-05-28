@@ -40,7 +40,8 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/update/{id}',[App\Http\Controllers\PrisonerListController::class, 'update_function']);
         Route::get('guard_edit/{id}',[App\Http\Controllers\UserController::class, 'edit_function']);
         Route::post('/guard_update/{id}',[App\Http\Controllers\UserController::class, 'update_function']);
-        Route::get('/search',[App\Http\Controllers\PrisonerListController::class, 'search']);
+        Route::get('/searchprisoner',[App\Http\Controllers\PrisonerListController::class, 'search']);
+        Route::get('/searchguard',[App\Http\Controllers\UserController::class, 'search']);
         
 
 });

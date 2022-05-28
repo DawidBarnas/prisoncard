@@ -1,8 +1,19 @@
 @extends('layouts.dashboard')
 @section('contentdashb')
 
-<div class="col-6">
+<div class="row">
+  <div class="col-6">
     Lista strażników
+  </div>
+<div class="col-md-4">
+  <form action="/searchguard" method="get">
+    <div class="input-group">
+      <input type="search" name="search" class="form-control">
+      <span class="input-group-prepend">
+        <button type="submit" class="btn btn-primary">Szukaj</button>
+</span>
+</div>
+</form>
 </div>
 <div class="col-6">
   <a class="float-right" href="/add_delete_guard">
@@ -40,6 +51,6 @@
   </tbody>
 </table>
 {{ $guards->links() }}
-
+</div>
 
 @endsection('contentdashb')
