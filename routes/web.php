@@ -47,6 +47,11 @@ Route::middleware(['auth'])->group(function() {
         Route::get('edycja/{id}',[App\Http\Controllers\KaraController::class, 'edit_function']);
         Route::post('/update/{id}',[App\Http\Controllers\KaraController::class, 'update_function']);
         Route::get('usun/{id}', [App\Http\Controllers\KaraController::class, 'delete']);
+        Route::get('edycja/{id}',[App\Http\Controllers\PrzestepstwoController::class, 'edit_function']);
+        Route::post('/update/{id}',[App\Http\Controllers\PrzestepstwoController::class, 'update_function']);
+        Route::get('/dodaj_przestepstwo', [App\Http\Controllers\PrzestepstwoController::class, 'create']);
+        Route::post('/dodaj_przestepstwo',[App\Http\Controllers\PrzestepstwoController::class, 'store']);
+        Route::get('usun/{id}', [App\Http\Controllers\PrzestepstwoController::class, 'delete']);
 
         
 
@@ -55,6 +60,8 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/prisoner_list', [App\Http\Controllers\PrisonerListController::class, 'PrisonerList']);
     Route::get('/guard_list', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('/kara', [App\Http\Controllers\KaraController::class, 'index']);
+    Route::get('/szukaj',[App\Http\Controllers\KaraController::class, 'search']);
+    Route::get('/przestepstwo', [App\Http\Controllers\PrzestepstwoController::class, 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

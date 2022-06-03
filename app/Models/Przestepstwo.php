@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Przestepstwo extends Model
 {
     use HasFactory;
+    public $timestamps=false;
     protected $table = 'Przestepstwos';
     protected $fillable = [
         'id', 'id_wieznia', 'data_popelnienia', 'data_rozprawy', 'Klasyfikacja', 'Status',

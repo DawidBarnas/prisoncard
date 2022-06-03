@@ -1,8 +1,19 @@
 @extends('layouts.dashboard')
 @section('contentdashb')
 
-<div class="col-6">
-    Kary więźniów
+<div class="row">
+  <div class="col-6">
+    Kary
+</div>
+<div class="col-md-4">
+  <form action="/szukaj" method="get">
+    <div class="input-group">
+      <input type="search" name="search" class="form-control">
+      <span class="input-group-prepend">
+        <button type="submit" class="btn btn-primary">Szukaj</button>
+</span>
+</div>
+</form>
 </div>
 <div class="col-6">
   <a class="float-right" href="/dodaj_kare">
@@ -12,8 +23,8 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Id_kary</th>
-      <th scope="col">Id_wieznia</th>
+      <th scope="col">ID Kary</th>
+      <th scope="col">ID Wieznia</th>
       <th scope="col">Typ</th>
       <th scope="col">Data rozpoczęcia</th>
       <th scope="col">Planowana data zakończenia</th>
@@ -40,6 +51,6 @@
   </tbody>
 </table>
 {{ $karas->links() }}
-
+</div>
 
 @endsection('contentdashb')

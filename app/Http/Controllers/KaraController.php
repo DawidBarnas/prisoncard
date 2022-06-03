@@ -128,4 +128,11 @@ class KaraController extends Controller
         $karas->delete();
         return redirect('kara');
     }
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $karas = DB::table('karas')-> where ('id_wieznia', 'like', '%'.$search.'%')
+        ->paginate(10);
+        return view('kara',['karas' => $karas]);
+    }
 }
