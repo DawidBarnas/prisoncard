@@ -42,12 +42,19 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/guard_update/{id}',[App\Http\Controllers\UserController::class, 'update_function']);
         Route::get('/searchprisoner',[App\Http\Controllers\PrisonerListController::class, 'search']);
         Route::get('/searchguard',[App\Http\Controllers\UserController::class, 'search']);
+        Route::get('/dodaj_kare', [App\Http\Controllers\KaraController::class, 'create']);
+        Route::post('/dodaj_kare',[App\Http\Controllers\KaraController::class, 'store']);
+        Route::get('edycja/{id}',[App\Http\Controllers\KaraController::class, 'edit_function']);
+        Route::post('/update/{id}',[App\Http\Controllers\KaraController::class, 'update_function']);
+        Route::get('usun/{id}', [App\Http\Controllers\KaraController::class, 'delete']);
+
         
 
 });
 /* ZALOGOWANI */
     Route::get('/prisoner_list', [App\Http\Controllers\PrisonerListController::class, 'PrisonerList']);
     Route::get('/guard_list', [App\Http\Controllers\UserController::class, 'index']);
+    Route::get('/kara', [App\Http\Controllers\KaraController::class, 'index']);
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

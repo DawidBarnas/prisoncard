@@ -181,6 +181,13 @@
                                 <span class="hide-menu">Przywołaj/odeślij więźnia</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/kara"
+                                aria-expanded="false">
+                                <i class="mdi mdi-block-helper"></i>
+                                <span class="hide-menu">Kara</span>
+                            </a>
+                        </li>
                         
                         
                     </ul>
