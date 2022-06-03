@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -31,11 +31,22 @@ class UserController extends Controller
 
     public function delete($id)
     {
+        
         $guards = User::where('role','user')->find($id);
+        $guarddeletelog = [
+            'typ' => 2,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $guards->id,
+            'name' => $guards->name,
+            'surname' => $guards->surname,
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($guarddeletelog);
         $guards->delete();
         return redirect('guard_list');
 
     }
+    
     public function search(Request $request)
     {
         $search = $request->get('search');

@@ -53,6 +53,10 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/dodaj_przestepstwo',[App\Http\Controllers\PrzestepstwoController::class, 'store']);
         Route::get('usun/{id}', [App\Http\Controllers\PrzestepstwoController::class, 'delete']);
 
+        //ROUTING LOGOW
+        Route::get('/guard_log_list', [App\Http\Controllers\LogTableController::class, 'LogGuardList']);
+        Route::get('/prisoner_log_list', [App\Http\Controllers\LogTableController::class, 'LogPrisonerList']);
+
         
 
 });

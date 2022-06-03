@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Prisoner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PrisonerListController extends Controller
 {
@@ -21,6 +22,15 @@ class PrisonerListController extends Controller
     public function delete($id)
     {
         $prisoners = Prisoner::find($id);
+        $prisonerdeletelog = [
+            'typ' => 5,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $prisoners->id,
+            'name' => $prisoners->Imie,
+            'surname' => $prisoners->Nazwisko,
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($prisonerdeletelog);
         $prisoners->delete();
         return redirect('prisoner_list');
 

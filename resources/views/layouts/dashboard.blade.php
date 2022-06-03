@@ -151,6 +151,15 @@
                             </a>
                         </li>
                         @endcan
+                        @can('isAdmin')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/guard_log_list"
+                                aria-expanded="false">
+                                <i class="mdi mdi-book-open-page-variant"></i>
+                                <span class="hide-menu">Logi strażników</span>
+                            </a>
+                        </li>
+                        @endcan
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/prisoner_list"
                                 aria-expanded="false">
@@ -164,6 +173,15 @@
                                 aria-expanded="false">
                                 <i class="mdi mdi-face"></i>
                                 <span class="hide-menu">Dodaj więznia</span>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('isAdmin')
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/prisoner_log_list"
+                                aria-expanded="false">
+                                <i class="mdi mdi-book-open-page-variant"></i>
+                                <span class="hide-menu">Logi więźniów</span>
                             </a>
                         </li>
                         @endcan
