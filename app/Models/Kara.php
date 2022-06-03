@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Foundation\Auth\Kara as Authenticatable;
 class Kara extends Model
 {
     use HasFactory;
-
+    public $timestamps=false;
     protected $table = 'karas';
     protected $fillable = [
         'id', 
