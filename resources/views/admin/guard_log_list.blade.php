@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-6">
-    Lista strażników
+    <h1> Logi usunięć strażników </h1>
   </div>
 <table class="table table-hover">
   <thead>
@@ -30,7 +30,39 @@
     @endforeach
   </tbody>
 </table>
-{{ $DelGuards->links() }}
+{{ $DelGuards->appends(['EG' => $EditGuards->currentPage()])->links() }}
+</div>
+
+<div class="row">
+  <div class="col-6">
+  <h1> Logi edycji strażników </h1>
+  </div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Osoba edytująca</th>
+      <th scope="col">Id strażnika</th>
+      <th scope="col">Imie strażnika</th>
+      <th scope="col">Nazwisko strażnika</th>
+      <th scope="col">Data edycji strażnika</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($EditGuards as $EditGuard)
+      <tr>
+        <th scope="row">{{$EditGuard->id}}</th>
+        <td>{{$EditGuard->user_ac}}</td>
+        <td>{{$EditGuard->id_n}}</td>
+        <td>{{$EditGuard->name}}</td>
+        <td>{{$EditGuard->surname}}</td>
+        <td>{{$EditGuard->date}}</td>     
+      </tr>
+      
+    @endforeach
+  </tbody>
+</table>
+{{ $EditGuards->appends(['DG' => $DelGuards->currentPage()])->links() }}
 </div>
 
 
