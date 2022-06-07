@@ -3,7 +3,42 @@
 
 <div class="row">
   <div class="col-6">
-    <h1> Logi usunięć strażników </h1>
+    <h2> Logi dodań strażników </h2>
+  </div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Osoba dodająca</th>
+      <th scope="col">Id strażnika</th>
+      <th scope="col">Imie strażnika</th>
+      <th scope="col">Nazwisko strażnika</th>
+      <th scope="col">Data dodania strażnika</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($AddGuards as $AddGuard)
+      <tr>
+        <th scope="row">{{$AddGuard->id}}</th>
+        <td>{{$AddGuard->user_ac}}</td>
+        <td>{{$AddGuard->id_n}}</td>
+        <td>{{$AddGuard->name}}</td>
+        <td>{{$AddGuard->surname}}</td>
+        <td>{{$AddGuard->date}}</td>     
+      </tr>
+      
+    @endforeach
+  </tbody>
+</table>
+{{ $AddGuards->appends(['EG' => $EditGuards->currentPage(),'DG' => $DelGuards->currentPage()])->links() }}
+</div>
+
+
+
+
+<div class="row">
+  <div class="col-6">
+    <h2> Logi usunięć strażników </h2>
   </div>
 <table class="table table-hover">
   <thead>
@@ -30,12 +65,12 @@
     @endforeach
   </tbody>
 </table>
-{{ $DelGuards->appends(['EG' => $EditGuards->currentPage()])->links() }}
+{{ $DelGuards->appends(['EG' => $EditGuards->currentPage(),'AG' => $AddGuards->currentPage()])->links() }}
 </div>
 
 <div class="row">
   <div class="col-6">
-  <h1> Logi edycji strażników </h1>
+  <h2> Logi edycji strażników </h2>
   </div>
 <table class="table table-hover">
   <thead>
@@ -62,7 +97,7 @@
     @endforeach
   </tbody>
 </table>
-{{ $EditGuards->appends(['DG' => $DelGuards->currentPage()])->links() }}
+{{ $EditGuards->appends(['DG' => $DelGuards->currentPage(),'AG' => $AddGuards->currentPage()])->links() }}
 </div>
 
 

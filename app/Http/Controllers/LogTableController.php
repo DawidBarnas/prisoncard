@@ -15,15 +15,18 @@ class LogTableController extends Controller
      */
     public function LogGuardList()
     {
+        $AddGuards = LogTable::where('typ','GuardAdd')->paginate(5, ['*'], 'AG');
         $DelGuards = LogTable::where('typ','GuardDelete')->paginate(5, ['*'], 'DG');
         $EditGuards = LogTable::where('typ','GuardEdit')->paginate(5, ['*'], 'EG');
-        return view('admin.guard_log_list', compact('DelGuards','EditGuards'));
+        return view('admin.guard_log_list', compact('DelGuards','EditGuards','AddGuards'));
     }
 
     public function LogPrisonerList()
     {
-        $DelPrisoners = LogTable::where('typ','PrisonerDelete')->paginate(7);
-        return view('admin.prisoner_log_list', compact('DelPrisoners'));
+        $AddPrisoners = LogTable::where('typ','PrisonerAdd')->paginate(5, ['*'], 'AP');
+        $DelPrisoners = LogTable::where('typ','PrisonerDelete')->paginate(5, ['*'], 'DP');
+        $EditPrisoners = LogTable::where('typ','PrisonerEdit')->paginate(5, ['*'], 'EP');
+        return view('admin.prisoner_log_list', compact('DelPrisoners','EditPrisoners','AddPrisoners'));
     }
 
     /**

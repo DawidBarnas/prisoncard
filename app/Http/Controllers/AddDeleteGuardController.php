@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class AddDeleteGuardController extends Controller
 {
@@ -52,6 +55,18 @@ class AddDeleteGuardController extends Controller
             'Status' => request('Status'),
             
         ]);
+
+        $currentAddGuard = User::max('id');
+
+        $guardaddlog = [
+            'typ' => 3,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $currentAddGuard,
+            'name' => request('name'),
+            'surname' => request('surname'),
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($guardaddlog);
 
         return redirect('guard_list');
     }
