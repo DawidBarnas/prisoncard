@@ -123,6 +123,17 @@ class PrisonerListController extends Controller
 
         DB::update('update prisoners set Imie = ?, Nazwisko = ?, Miasto = ?, Ulica = ?, Waga = ?, Wzrost = ?, Telefon = ?, id_celi = ?, mozliwosc_wizyt = ?, mozliwosc_przepustek = ?, Status_celi = ? where id = ?', [$Imie, $Nazwisko, $Miasto, $Ulica, $Waga, $Wzrost, $Telefon, $id_celi, $mozliwosc_wizyt, $mozliwosc_przepustek, $Status_celi, $id]);
 
+        $prisoneredit = Prisoner::find($id);
+        $prisonereditlog = [
+            'typ' => 4,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $prisoneredit->id,
+            'name' => $prisoneredit->Imie,
+            'surname' => $prisoneredit->Nazwisko,
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($prisonereditlog);
+
         return redirect('prisoner_list')->with('success','Dane zmienione');
     }
 
