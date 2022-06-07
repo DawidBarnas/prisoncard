@@ -52,6 +52,12 @@ Route::middleware(['auth'])->group(function() {
         Route::get('edycja/{id}',[App\Http\Controllers\PrzestepstwoController::class, 'edit_function']);
         Route::post('/przestepstwo_update/{id}',[App\Http\Controllers\PrzestepstwoController::class, 'update_function']);
         Route::get('skasuj/{id}', [App\Http\Controllers\PrzestepstwoController::class, 'delete']);
+        Route::get('usun/{id}', [App\Http\Controllers\PrzestepstwoController::class, 'delete']);
+        //ROUTING LOGOW
+        Route::get('/guard_log_list', [App\Http\Controllers\LogTableController::class, 'LogGuardList']);
+        Route::get('/prisoner_log_list', [App\Http\Controllers\LogTableController::class, 'LogPrisonerList']);
+
+        
 
 });
 /* ZALOGOWANI */

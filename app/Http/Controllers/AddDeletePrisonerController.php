@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Prisoner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class AddDeletePrisonerController extends Controller
 {
@@ -61,6 +63,18 @@ class AddDeletePrisonerController extends Controller
             'mozliwosc_przepustek' => request('mozliwosc_przepustek'),
             'Status_celi' => request('Status_celi'),
         ]);
+
+        $currentAddPrisoner = Prisoner::max('id');
+
+        $prisoneraddlog = [
+            'typ' => 6,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $currentAddPrisoner,
+            'name' => request('Imie'),
+            'surname' => request('Nazwisko'),
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($prisoneraddlog);
 
         return redirect('prisoner_list');
     }
