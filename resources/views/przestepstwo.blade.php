@@ -43,7 +43,7 @@
         <td>{{$przestepstwo->Status}}</td> 
         <td>
         <a href="edycja/{{ $przestepstwo -> id }}">Edytuj</a>
-        <a href="usun/{{ $przestepstwo -> id}}">Usuń</a>
+        <a href="skasuj/{{ $przestepstwo -> id}}">Usuń</a>
         </td>  
       </tr>
       

@@ -42,7 +42,7 @@
         <td>{{$kara->planowana_data_zakonczenia}}</td>
         <td>{{$kara->dodatkowe_kary}}</td> 
         <td>
-        <a href="edycja/{{ $kara -> id }}">Edytuj</a>
+        <a href="edycjakary/{{ $kara -> id }}">Edytuj</a>
         <a href="usun/{{ $kara -> id}}">Usuń</a>
         </td>  
       </tr>

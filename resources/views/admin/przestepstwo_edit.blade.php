@@ -8,7 +8,7 @@
             <title>Edycja</title>
 </head>
 <body>
-<form action="/update/{{ $przestepstwo[0]->id}}" method="post">
+<form action="/przestepstwo_update/{{ $przestepstwo[0]->id}}" method="post">
         {{csrf_field()}}
 <div class="container">
     <div class="jumbotron" style="margin-top: 5%;">
