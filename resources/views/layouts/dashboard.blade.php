@@ -220,7 +220,13 @@
                                 <span class="hide-menu">Miejsce więźnia</span>
                             </a>
                         </li>
-                        
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/miejscestraznika"
+                                aria-expanded="false">
+                                <i class="mdi mdi-bullhorn"></i>
+                                <span class="hide-menu">Miejsce strażnika</span>
+                            </a>
+                        </li>
                         
                     </ul>
                 </nav>

@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('miejsceuseras', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('id_straznika')->unsigned();
-            $table->increments('Miejsce');
+            $table->enum('Miejsce', ['Pietro1','Pietro2','Pietro3','Parter','Spacerniak','Brak']);
             $table->foreign('id_straznika')->references('id')->on('users');
         });
     }
