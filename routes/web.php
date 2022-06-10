@@ -46,18 +46,22 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/dodaj_kare',[App\Http\Controllers\KaraController::class, 'store']);
         Route::get('edycjakary/{id}',[App\Http\Controllers\KaraController::class, 'edit_function']);
         Route::post('/kara_update/{id}',[App\Http\Controllers\KaraController::class, 'update_function']);
-        Route::get('usun/{id}', [App\Http\Controllers\KaraController::class, 'delete']);
+        Route::get('usunkare/{id}', [App\Http\Controllers\KaraController::class, 'delete']);
         Route::get('/dodaj_przestepstwo', [App\Http\Controllers\PrzestepstwoController::class, 'create']);
         Route::post('/dodaj_przestepstwo',[App\Http\Controllers\PrzestepstwoController::class, 'store']);
         Route::get('edycja/{id}',[App\Http\Controllers\PrzestepstwoController::class, 'edit_function']);
         Route::post('/przestepstwo_update/{id}',[App\Http\Controllers\PrzestepstwoController::class, 'update_function']);
         Route::get('skasuj/{id}', [App\Http\Controllers\PrzestepstwoController::class, 'delete']);
-        Route::get('usun/{id}', [App\Http\Controllers\PrzestepstwoController::class, 'delete']);
+        Route::get('/dodaj_miejscew', [App\Http\Controllers\MiejsceWiezniaController::class, 'create']);
+        Route::post('/dodaj_miejscew',[App\Http\Controllers\MiejsceWiezniaController::class, 'store']);
+        Route::get('edycjamiejsca/{id}',[App\Http\Controllers\MiejsceWiezniaController::class, 'edit_function']);
+        Route::post('/miejscewieznia_update/{id}',[App\Http\Controllers\MiejsceWiezniaController::class, 'update_function']);
+        Route::get('skasujmiejsce/{id}', [App\Http\Controllers\MiejsceWiezniaController::class, 'delete']);
+
+
         //ROUTING LOGOW
         Route::get('/guard_log_list', [App\Http\Controllers\LogTableController::class, 'LogGuardList']);
         Route::get('/prisoner_log_list', [App\Http\Controllers\LogTableController::class, 'LogPrisonerList']);
-
-        
 
 });
 /* ZALOGOWANI */
@@ -67,6 +71,10 @@ Route::middleware(['auth'])->group(function() {
     Route::get('/szukaj',[App\Http\Controllers\KaraController::class, 'search']);
     Route::get('/przestepstwo', [App\Http\Controllers\PrzestepstwoController::class, 'index']);
     Route::get('/szukajprzestepstwa',[App\Http\Controllers\PrzestepstwoController::class, 'search']);
+    Route::get('/miejscewieznia', [App\Http\Controllers\MiejsceWiezniaController::class, 'index']);
+    Route::get('/szukajwieznia',[App\Http\Controllers\MiejsceWiezniaController::class, 'search']);
+
 });
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

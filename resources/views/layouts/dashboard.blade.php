@@ -213,6 +213,13 @@
                                 <span class="hide-menu">Przestepstwo</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/miejscewieznia"
+                                aria-expanded="false">
+                                <i class="mdi mdi-transit-transfer"></i>
+                                <span class="hide-menu">Miejsce więźnia</span>
+                            </a>
+                        </li>
                         
                         
                     </ul>

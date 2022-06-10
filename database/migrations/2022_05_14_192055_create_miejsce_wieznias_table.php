@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('miejsce_wieznias', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('id_wieznia')->unsigned();
-            $table->increments('Miejsce');
+            $table->enum('Miejsce', ['Cela','Przepustka','Spacerniak','Izolacja1','Izolacja2','Izolacja3']);
             $table->foreign('id_wieznia')->references('id')->on('prisoners');
         });
     }

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Miejsce_wieznia extends Model
 {
     use HasFactory;
+    public $timestamps=false;
     protected $table = 'miejsce_wieznias';
     protected $fillable = [
         'id_wieznia', 'Miejsce',
@@ -16,7 +17,7 @@ class Miejsce_wieznia extends Model
     protected $casts =
     [
         'id_wieznia' => 'int',
-        'Miejsce' => 'int',
+        'Miejsce' => 'string',
 
     ];
 }
