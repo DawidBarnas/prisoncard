@@ -11,13 +11,15 @@ class Miejsceusera extends Model
     public $timestamps=false;
     protected $table = 'miejsceuseras';
     protected $fillable = [
-        'id_straznika', 'Miejsce',
+        'id_straznika', 'Miejsce', 'name', 'surname',
     ];
 
     protected $casts =
     [
         'id_straznika' => 'int',
         'Miejsce' => 'string',
+        'name' => 'string',
+        'surname' => 'string',
 
     ];
 }

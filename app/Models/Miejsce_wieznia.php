@@ -11,12 +11,14 @@ class Miejsce_wieznia extends Model
     public $timestamps=false;
     protected $table = 'miejsce_wieznias';
     protected $fillable = [
-        'id_wieznia', 'Miejsce',
+        'id_wieznia', 'Miejsce', 'Imie', 'Nazwisko',
     ];
 
     protected $casts =
     [
         'id_wieznia' => 'int',
+        'Imie' => 'string',
+        'Nazwisko' => 'string',
         'Miejsce' => 'string',
 
     ];

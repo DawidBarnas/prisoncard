@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Miejsce_wieznia;
+use App\Models\Prisoner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class MiejsceWiezniaController extends Controller
 {
@@ -37,6 +40,10 @@ class MiejsceWiezniaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $id = request('id_wieznia');
+        $dane = Prisoner::find($id);
+        
         request()->validate([
 
             'id_wieznia' => 'required',
@@ -46,9 +53,20 @@ class MiejsceWiezniaController extends Controller
         Miejsce_wieznia::create([
             'id_wieznia' => request('id_wieznia'),
             'Miejsce' => request('Miejsce'),
-
-
+            'Imie' => $dane->Imie,
+            'Nazwisko' => $dane->Nazwisko,
         ]);
+
+        $miejscewiezniaaddlog = [
+            'typ' => 12,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => request('id_wieznia'),
+            'name' => $dane->Imie,
+            'surname' => $dane->Nazwisko,
+            'Miejsceprisoner' => request('Miejsce'),
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($miejscewiezniaaddlog);
 
         return redirect('miejscewieznia');
     }
@@ -118,6 +136,19 @@ class MiejsceWiezniaController extends Controller
     public function delete($id)
     {
         $miejsce_wieznias = Miejsce_wieznia::find($id);
+
+        $miejsceprisonerdellog = [
+            'typ' => 11,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $miejsce_wieznias->id_wieznia,
+            'name' => $miejsce_wieznias->Imie,
+            'surname' => $miejsce_wieznias->Nazwisko,
+            'Miejsceprisoner' => $miejsce_wieznias->Miejsce,
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($miejsceprisonerdellog);
+
+
         $miejsce_wieznias->delete();
         return redirect('miejscewieznia');
     }

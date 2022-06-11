@@ -17,6 +17,8 @@ class LogTable extends Model
         'name',
         'surname',
         'date',
+        'Miejsceuser',
+        'Miejsceprisoner',
     ];
 
     protected $casts =
@@ -27,7 +29,6 @@ class LogTable extends Model
         'id_n' => 'int',
         'name' => 'string',
         'surname' => 'string',
-        'date' => 'string',
-
+        'date' => 'string',    
     ];
 }

@@ -72,6 +72,8 @@ Route::middleware(['auth'])->group(function() {
         //ROUTING LOGOW
         Route::get('/guard_log_list', [App\Http\Controllers\LogTableController::class, 'LogGuardList']);
         Route::get('/prisoner_log_list', [App\Http\Controllers\LogTableController::class, 'LogPrisonerList']);
+        Route::get('/miejscestraznikalogi', [App\Http\Controllers\LogTableController::class, 'LogGuardPlaceList']);
+        Route::get('/miejscewieznialogi', [App\Http\Controllers\LogTableController::class, 'LogPrisonerPlaceList']);
 
 });
 /* ZALOGOWANI */

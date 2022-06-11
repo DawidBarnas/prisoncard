@@ -24,6 +24,8 @@
   <thead>
     <tr>
       <th scope="col">ID Wieznia</th>
+      <th scope="col">Imie</th>
+      <th scope="col">Nazwisko</th>
       <th scope="col">Miejsce</th>
       <th scope="col">Akcje</th>
     </tr>
@@ -32,6 +34,8 @@
     @foreach($miejsce_wieznias as $miejsce_wieznia)
       <tr>
         <th scope="row">{{$miejsce_wieznia->id_wieznia}}</th>
+        <td>{{$miejsce_wieznia->Imie}}</td>
+        <td>{{$miejsce_wieznia->Nazwisko}}</td>
         <td>{{$miejsce_wieznia->Miejsce}}</td>
         <td>
         <a href="edycjamiejsca/{{ $miejsce_wieznia -> id }}">Edytuj</a>

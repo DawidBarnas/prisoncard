@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\miejsceusera;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class MiejsceuseraController extends Controller
 {
@@ -36,6 +38,9 @@ class MiejsceuseraController extends Controller
      */
     public function store(Request $request)
     {
+        $id = request('id_straznika');
+        $dane = User::find($id);
+
         request()->validate([
 
             'id_straznika' => 'required',
@@ -45,9 +50,21 @@ class MiejsceuseraController extends Controller
         Miejsceusera::create([
             'id_straznika' => request('id_straznika'),
             'Miejsce' => request('Miejsce'),
-
-
+            'name' => $dane->name,
+            'surname' => $dane->surname,
         ]);
+
+        
+        $miejsceuseraddlog = [
+            'typ' => 9,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => request('id_straznika'),
+            'name' => $dane->name,
+            'surname' => $dane->surname,
+            'Miejsceuser' => request('Miejsce'),
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($miejsceuseraddlog);
 
         return redirect('miejscestraznika');
     }
@@ -116,6 +133,18 @@ class MiejsceuseraController extends Controller
     public function delete($id)
     {
         $miejsceuseras = Miejsceusera::find($id);
+
+        $miejsceuserdellog = [
+            'typ' => 8,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => $miejsceuseras->id_straznika,
+            'name' => $miejsceuseras->name,
+            'surname' => $miejsceuseras->surname,
+            'Miejsceuser' => $miejsceuseras->Miejsce,
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($miejsceuserdellog);
+
         $miejsceuseras->delete();
         return redirect('miejscestraznika');
     }

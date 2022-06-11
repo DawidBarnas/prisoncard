@@ -186,20 +186,6 @@
                         </li>
                         @endcan
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html"
-                                aria-expanded="false">
-                                <i class="mdi mdi-file"></i>
-                                <span class="hide-menu">Widok więzienia</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="starter-kit.html"
-                                aria-expanded="false">
-                                <i class="mdi mdi-file"></i>
-                                <span class="hide-menu">Przywołaj/odeślij więźnia</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/kara"
                                 aria-expanded="false">
                                 <i class="mdi mdi-block-helper"></i>
@@ -221,10 +207,24 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/miejscewieznialogi"
+                                aria-expanded="false">
+                                <i class="mdi mdi-transit-transfer"></i>
+                                <span class="hide-menu">Logi miejsc więźniów</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/miejscestraznika"
                                 aria-expanded="false">
                                 <i class="mdi mdi-bullhorn"></i>
                                 <span class="hide-menu">Miejsce strażnika</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="/miejscestraznikalogi"
+                                aria-expanded="false">
+                                <i class="mdi mdi-bullhorn"></i>
+                                <span class="hide-menu">Logi miejsc strażników</span>
                             </a>
                         </li>
                         

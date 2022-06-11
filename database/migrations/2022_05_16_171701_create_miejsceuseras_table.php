@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('miejsceuseras', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_straznika')->unsigned();
+            $table->string('name');
+            $table->string('surname');
             $table->enum('Miejsce', ['Pietro1','Pietro2','Pietro3','Parter','Spacerniak','Brak']);
             $table->foreign('id_straznika')->references('id')->on('users');
         });

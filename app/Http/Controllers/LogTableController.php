@@ -29,6 +29,20 @@ class LogTableController extends Controller
         return view('admin.prisoner_log_list', compact('DelPrisoners','EditPrisoners','AddPrisoners'));
     }
 
+    public function LogGuardPlaceList()
+    {
+        $AddPlaceGuards = LogTable::where('typ','GuardPlaceAdd')->paginate(5, ['*'], 'AGP');
+        $GuardPlaceDeletes = LogTable::where('typ','GuardPlaceDelete')->paginate(5, ['*'], 'DGP');
+        return view('miejscestraznikalogi',compact('AddPlaceGuards','GuardPlaceDeletes'));
+    }
+
+    public function LogPrisonerPlaceList()
+    {
+        $PrisonerPlaceAdds = LogTable::where('typ','PrisonerPlaceAdd')->paginate(5, ['*'], 'APP');
+        $PrisonerPlaceDeletes = LogTable::where('typ','PrisonerPlaceDelete')->paginate(5, ['*'], 'DPP');
+        return view('miejscewieznialogi',compact('PrisonerPlaceAdds','PrisonerPlaceDeletes'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
