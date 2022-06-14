@@ -16,7 +16,7 @@ class MiejsceuseraController extends Controller
      */
     public function index()
     {
-        $miejsceuseras = Miejsceusera::paginate(10);
+        $miejsceuseras = Miejsceusera::paginate(8);
         return view('miejscestraznika', compact('miejsceuseras'));
     }
 
@@ -124,7 +124,19 @@ class MiejsceuseraController extends Controller
         $id_straznika = $miejsceusera = $request->input('id_straznika');
         $Miejsce = $miejsceusera = $request->input('Miejsce');
 
+        $id = request('id_straznika');
+        $dane = User::find($id);
 
+        $miejsceusereditlog = [
+            'typ' => 7,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => request('id_straznika'),
+            'name' => $dane->name,
+            'surname' => $dane->surname,
+            'Miejsceuser' => request('Miejsce'),
+            'date' => NOW(2),
+        ];
+        DB::table('log_tables')->insert($miejsceusereditlog);
 
         DB::update('update miejsceuseras set id_straznika = ?, Miejsce = ? where id = ?', [$id_straznika, $Miejsce,  $id]);
 

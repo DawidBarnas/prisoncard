@@ -14,7 +14,7 @@ class PrzestepstwoController extends Controller
      */
     public function index()
     {
-        $przestepstwos = Przestepstwo::paginate(10);
+        $przestepstwos = Przestepstwo::paginate(8);
         return view('przestepstwo', compact('przestepstwos'));
     }
 

@@ -127,7 +127,19 @@ class MiejsceWiezniaController extends Controller
         $id_wieznia = $miejsce_wieznia = $request->input('id_wieznia');
         $Miejsce = $miejsce_wieznia = $request->input('Miejsce');
 
+        $id = request('id_wieznia');
+        $dane2 = Prisoner::find($id);
 
+        $miejscewiezniaeditlog = [
+            'typ' => 10,
+            'user_ac' => Auth::user()->name ,
+            'id_n' => request('id_wieznia'),
+            'name' => $dane2->Imie,
+            'surname' => $dane2->Nazwisko,
+            'Miejsceprisoner' => request('Miejsce'),
+            'date' => NOW(2),
+             ];
+        DB::table('log_tables')->insert($miejscewiezniaeditlog);
 
         DB::update('update miejsce_wieznias set id_wieznia = ?, Miejsce = ? where id = ?', [$id_wieznia, $Miejsce,  $id]);
 

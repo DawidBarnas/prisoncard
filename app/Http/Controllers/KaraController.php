@@ -15,7 +15,7 @@ class KaraController extends Controller
      */
     public function index()
     {
-        $karas = Kara::paginate(10);
+        $karas = Kara::paginate(8);
         return view('kara', compact('karas'));
     }
 

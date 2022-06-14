@@ -33,14 +33,16 @@ class LogTableController extends Controller
     {
         $AddPlaceGuards = LogTable::where('typ','GuardPlaceAdd')->paginate(5, ['*'], 'AGP');
         $GuardPlaceDeletes = LogTable::where('typ','GuardPlaceDelete')->paginate(5, ['*'], 'DGP');
-        return view('miejscestraznikalogi',compact('AddPlaceGuards','GuardPlaceDeletes'));
+        $GuardPlaceEdits = LogTable::where('typ','GuardPlaceEdit')->paginate(5, ['*'], 'EGP');
+        return view('miejscestraznikalogi',compact('AddPlaceGuards','GuardPlaceDeletes','GuardPlaceEdits'));
     }
 
     public function LogPrisonerPlaceList()
     {
         $PrisonerPlaceAdds = LogTable::where('typ','PrisonerPlaceAdd')->paginate(5, ['*'], 'APP');
         $PrisonerPlaceDeletes = LogTable::where('typ','PrisonerPlaceDelete')->paginate(5, ['*'], 'DPP');
-        return view('miejscewieznialogi',compact('PrisonerPlaceAdds','PrisonerPlaceDeletes'));
+        $PrisonerPlaceEdits = LogTable::where('typ','PrisonerPlaceEdit')->paginate(5, ['*'], 'EPP');
+        return view('miejscewieznialogi',compact('PrisonerPlaceAdds','PrisonerPlaceDeletes','PrisonerPlaceEdits'));
     }
 
     /**

@@ -32,7 +32,7 @@
     @endforeach
   </tbody>
 </table>
-{{ $PrisonerPlaceAdds->appends(['DPP' => $PrisonerPlaceDeletes->currentPage()])->links() }}
+{{ $PrisonerPlaceAdds->appends(['DPP' => $PrisonerPlaceDeletes->currentPage(),'EPP' => $PrisonerPlaceEdits->currentPage()])->links() }}
 </div>
 
 <div class="row">
@@ -43,7 +43,7 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Osoba dodająca</th>
+      <th scope="col">Osoba usuwajaca</th>
       <th scope="col">Id strażnika</th>
       <th scope="col">Imie strażnika</th>
       <th scope="col">Nazwisko strażnika</th>
@@ -66,7 +66,41 @@
     @endforeach
   </tbody>
 </table>
-{{ $PrisonerPlaceDeletes->appends(['APP' => $PrisonerPlaceAdds->currentPage()])->links() }}
+{{ $PrisonerPlaceDeletes->appends(['APP' => $PrisonerPlaceAdds->currentPage(),'EPP' => $PrisonerPlaceEdits->currentPage()])->links() }}
+</div>
+
+<div class="row">
+  <div class="col-6">
+    <h2> Logi edycji miejsc więźniów </h2>
+  </div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Osoba edytująca</th>
+      <th scope="col">Id strażnika</th>
+      <th scope="col">Imie strażnika</th>
+      <th scope="col">Nazwisko strażnika</th>
+      <th scope="col">Miejsce</th>
+      <th scope="col">Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($PrisonerPlaceEdits as $PrisonerPlaceEdit)
+      <tr>
+        <th scope="row">{{$PrisonerPlaceEdit->id}}</th>
+        <td>{{$PrisonerPlaceEdit->user_ac}}</td>
+        <td>{{$PrisonerPlaceEdit->id_n}}</td>
+        <td>{{$PrisonerPlaceEdit->name}}</td>
+        <td>{{$PrisonerPlaceEdit->surname}}</td>
+        <td>{{$PrisonerPlaceEdit->Miejsceprisoner}}</td>
+        <td>{{$PrisonerPlaceEdit->date}}</td>     
+      </tr>
+      
+    @endforeach
+  </tbody>
+</table>
+{{ $PrisonerPlaceEdits->appends(['APP' => $PrisonerPlaceAdds->currentPage(),'DPP' => $PrisonerPlaceDeletes->currentPage()])->links() }}
 </div>
 
 
