@@ -146,18 +146,19 @@ class MiejsceuseraController extends Controller
     {
         $miejsceuseras = Miejsceusera::find($id);
 
-        $miejsceuserdellog = [
-            'typ' => 8,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => $miejsceuseras->id_straznika,
-            'name' => $miejsceuseras->name,
-            'surname' => $miejsceuseras->surname,
-            'Miejsceuser' => $miejsceuseras->Miejsce,
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($miejsceuserdellog);
+        $user_ac = Auth::user()->name;
+            $id_n = $miejsceuseras->id_straznika;
+            $name = $miejsceuseras->name;
+            $surname = $miejsceuseras->surname;
+            $Miejsceuser = $miejsceuseras->Miejsce;
+            
+        
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname, Miejsceuser,date) 
+        VALUES(8,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'","'.$Miejsceuser.'",NOW(3));'));
 
-        $miejsceuseras->delete();
+        DB::connection('mysql')->delete(DB::raw('DELETE FROM miejsceuseras WHERE id='.$id.';'));
+        
+
         return redirect('miejscestraznika');
     }
     public function search(Request $request)

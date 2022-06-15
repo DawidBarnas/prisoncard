@@ -57,16 +57,18 @@ class MiejsceWiezniaController extends Controller
             'Nazwisko' => $dane->Nazwisko,
         ]);
 
-        $miejscewiezniaaddlog = [
-            'typ' => 12,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => request('id_wieznia'),
-            'name' => $dane->Imie,
-            'surname' => $dane->Nazwisko,
-            'Miejsceprisoner' => request('Miejsce'),
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($miejscewiezniaaddlog);
+        
+            
+            $user_ac = Auth::user()->name ;
+            $id_n = request('id_wieznia');
+            $name = $dane->Imie;
+            $surname = $dane->Nazwisko;
+            $Miejsceprisoner = request('Miejsce');
+            
+        
+        
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname, Miejsceprisoner,date) 
+        VALUES(12,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'","'.$Miejsceprisoner.'",NOW(3));'));
 
         return redirect('miejscewieznia');
     }
@@ -130,18 +132,22 @@ class MiejsceWiezniaController extends Controller
         $id = request('id_wieznia');
         $dane2 = Prisoner::find($id);
 
-        $miejscewiezniaeditlog = [
-            'typ' => 10,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => request('id_wieznia'),
-            'name' => $dane2->Imie,
-            'surname' => $dane2->Nazwisko,
-            'Miejsceprisoner' => request('Miejsce'),
-            'date' => NOW(2),
-             ];
-        DB::table('log_tables')->insert($miejscewiezniaeditlog);
-
+        
+            
+            $user_ac = Auth::user()->name ;
+            $id_n = request('id_wieznia');
+            $name = $dane2->Imie;
+            $surname = $dane2->Nazwisko;
+            $Miejsceprisoner = request('Miejsce');
+            
+        
         DB::update('update miejsce_wieznias set id_wieznia = ?, Miejsce = ? where id = ?', [$id_wieznia, $Miejsce,  $id]);
+
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname, Miejsceprisoner,date) 
+        VALUES(10,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'","'.$Miejsceprisoner.'",NOW(3));'));
+
+
+        
 
         return redirect('miejscewieznia')->with('success','Dane zmienione');
     }
@@ -149,19 +155,18 @@ class MiejsceWiezniaController extends Controller
     {
         $miejsce_wieznias = Miejsce_wieznia::find($id);
 
-        $miejsceprisonerdellog = [
-            'typ' => 11,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => $miejsce_wieznias->id_wieznia,
-            'name' => $miejsce_wieznias->Imie,
-            'surname' => $miejsce_wieznias->Nazwisko,
-            'Miejsceprisoner' => $miejsce_wieznias->Miejsce,
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($miejsceprisonerdellog);
+        
+            
+            $user_ac = Auth::user()->name ;
+            $id_n = $miejsce_wieznias->id_wieznia;
+            $name = $miejsce_wieznias->Imie;
+            $surname = $miejsce_wieznias->Nazwisko;
+            $Miejsceprisoner = $miejsce_wieznias->Miejsce;
+            
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname, Miejsceprisoner,date) 
+        VALUES(11,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'","'.$Miejsceprisoner.'",NOW(3));'));
 
-
-        $miejsce_wieznias->delete();
+        DB::connection('mysql')->delete(DB::raw('DELETE FROM miejsce_wieznias WHERE id='.$id.';'));
         return redirect('miejscewieznia');
     }
     public function search(Request $request)

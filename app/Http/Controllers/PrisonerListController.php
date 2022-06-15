@@ -21,17 +21,23 @@ class PrisonerListController extends Controller
 
     public function delete($id)
     {
+    
         $prisoners = Prisoner::find($id);
-        $prisonerdeletelog = [
-            'typ' => 5,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => $prisoners->id,
-            'name' => $prisoners->Imie,
-            'surname' => $prisoners->Nazwisko,
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($prisonerdeletelog);
-        $prisoners->delete();
+        
+            
+            $user_ac = Auth::user()->name ;
+            $id_n = $prisoners->id;
+            $name = $prisoners->Imie;
+            $surname = $prisoners->Nazwisko;
+           
+        
+        
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname,date) 
+        VALUES(5,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'",NOW(3));'));
+
+
+        DB::connection('mysql')->delete(DB::raw('DELETE FROM prisoners WHERE id='.$id.';'));
+        
         return redirect('prisoner_list');
 
     }
@@ -124,15 +130,17 @@ class PrisonerListController extends Controller
         DB::update('update prisoners set Imie = ?, Nazwisko = ?, Miasto = ?, Ulica = ?, Waga = ?, Wzrost = ?, Telefon = ?, id_celi = ?, mozliwosc_wizyt = ?, mozliwosc_przepustek = ?, Status_celi = ? where id = ?', [$Imie, $Nazwisko, $Miasto, $Ulica, $Waga, $Wzrost, $Telefon, $id_celi, $mozliwosc_wizyt, $mozliwosc_przepustek, $Status_celi, $id]);
 
         $prisoneredit = Prisoner::find($id);
-        $prisonereditlog = [
-            'typ' => 4,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => $prisoneredit->id,
-            'name' => $prisoneredit->Imie,
-            'surname' => $prisoneredit->Nazwisko,
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($prisonereditlog);
+       
+            $user_ac = Auth::user()->name ;
+
+            $id_n = $prisoneredit->id;
+            $name = $prisoneredit->Imie;
+            $surname = $prisoneredit->Nazwisko;
+        
+        
+       
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname,date) 
+        VALUES(4,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'",NOW());'));
 
         return redirect('prisoner_list')->with('success','Dane zmienione');
     }

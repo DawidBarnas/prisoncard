@@ -33,16 +33,19 @@ class UserController extends Controller
     {
         
         $guards = User::where('role','user')->find($id);
-        $guarddeletelog = [
-            'typ' => 2,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => $guards->id,
-            'name' => $guards->name,
-            'surname' => $guards->surname,
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($guarddeletelog);
-        $guards->delete();
+        
+            
+            $user_ac = Auth::user()->name ;
+            $id_n = $guards->id;
+            $name = $guards->name;
+            $surname = $guards->surname;
+            
+        
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname,date) 
+        VALUES(2,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'",NOW(3));'));
+
+
+        DB::connection('mysql')->delete(DB::raw('DELETE FROM users WHERE id='.$id.';'));
         return redirect('guard_list');
 
     }

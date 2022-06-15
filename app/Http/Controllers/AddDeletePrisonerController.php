@@ -66,15 +66,14 @@ class AddDeletePrisonerController extends Controller
 
         $currentAddPrisoner = Prisoner::max('id');
 
-        $prisoneraddlog = [
-            'typ' => 6,
-            'user_ac' => Auth::user()->name ,
-            'id_n' => $currentAddPrisoner,
-            'name' => request('Imie'),
-            'surname' => request('Nazwisko'),
-            'date' => NOW(2),
-        ];
-        DB::table('log_tables')->insert($prisoneraddlog);
+            $user_ac = Auth::user()->name ;
+            $id_n = $currentAddPrisoner;
+            $name = request('Imie');
+            $surname = request('Nazwisko');
+            
+        
+        DB::connection('mysql')->insert(DB::raw('INSERT INTO log_tables (typ, user_ac, id_n, name, surname,date) 
+        VALUES(6,"'.$user_ac.'",'.$id_n.',"'.$name.'","'.$surname.'",NOW());'));
 
         return redirect('prisoner_list');
     }

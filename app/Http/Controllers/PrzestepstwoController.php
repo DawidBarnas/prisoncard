@@ -123,8 +123,10 @@ class PrzestepstwoController extends Controller
 
     public function delete($id)
     {
-        $przestepstwos = Przestepstwo::find($id);
-        $przestepstwos->delete();
+        
+        DB::connection('mysql')->delete(DB::raw('DELETE FROM przestepstwos WHERE id='.$id.';'));
+
+
         return redirect('przestepstwo');
     }
 
